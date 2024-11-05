@@ -78,11 +78,16 @@ const years = [
     title: "First Year",
     description: "Foundation in mathematics, programming fundamentals, and basic engineering principles.",
     subjects: [
-      "Mathematics & Statistics",
-      "Programming Fundamentals",
-      "Digital Logic",
-      "Computer Architecture",
-      "Basic Electronics"
+      "Analyse 1",
+      "Algèbre 1",
+      "Algorithmique et structure de données 1 ",
+      "Structure machine 1",
+      "Physique 1",
+      "Chimie 1",
+      "Management de projet 1",
+      "Introduction au développement Web",
+      "Technical English 1",
+      "Communication professionnelle"
     ]
   },
   {
