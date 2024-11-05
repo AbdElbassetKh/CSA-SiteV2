@@ -19,6 +19,8 @@ export default function App() {
         <Login />
       ) : currentPage === 'question' ? (
         <QuestionForm />
+      ) : currentPage === 'program-details' ? (
+        <ProgramDetails />
       ) : (
         <>
           <Hero />

@@ -36,16 +36,12 @@ export default function Navbar({ onNavigate }: NavbarProps) {
             <div className="ml-10 flex items-center space-x-8">
               <a href="#why" className="text-gray-300 hover:text-white transition-colors">Why us?</a>
               <a href="#about" className="text-gray-300 hover:text-white transition-colors">About</a>
-              <a 
-                href="./programdetails" 
+              <button 
+                onClick={() => onNavigate('program-details')}
                 className="text-gray-300 hover:text-white transition-colors"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavigate('program');
-                }}
               >
                 Program details
-              </a>
+              </button>
               <button 
                 onClick={() => onNavigate('login')} 
                 className="btn-primary"
@@ -72,17 +68,15 @@ export default function Navbar({ onNavigate }: NavbarProps) {
           <div className="px-4 pt-2 pb-3 space-y-1">
             <a href="#why" className="block text-gray-300 hover:text-white px-3 py-2 rounded-md">Why us?</a>
             <a href="#about" className="block text-gray-300 hover:text-white px-3 py-2 rounded-md">About</a>
-            <a 
-              href="/program-details" 
-              className="block text-gray-300 hover:text-white px-3 py-2 rounded-md"
-              onClick={(e) => {
-                e.preventDefault();
+            <button 
+              onClick={() => {
                 onNavigate('program-details');
                 setIsOpen(false);
               }}
+              className="block text-gray-300 hover:text-white px-3 py-2 rounded-md w-full text-left"
             >
               Program details
-            </a>
+            </button>
             <button 
               onClick={() => {
                 onNavigate('login');
