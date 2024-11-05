@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: black;
+    color: white;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 
+           transition-all duration-200 ease-in-out transform hover:scale-105
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-700
+           transition-all duration-200 ease-in-out
+           focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-black;
+  }
+
+  .input-primary {
+    @apply bg-black border border-gray-800 rounded-lg px-4 py-2 text-white
+           focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+           transition-all duration-200 ease-in-out;
+  }
+
+  .card {
+    @apply bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800/50
+           hover:border-gray-700/50 transition-all duration-200 ease-in-out
+           hover:shadow-lg hover:shadow-blue-500/10;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500;
+  }
+}
