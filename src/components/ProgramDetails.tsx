@@ -1,4 +1,5 @@
-import { BookOpen, Calendar, GraduationCap, Clock } from 'lucide-react';
+import { BookOpen, Calendar, GraduationCap, Clock } from "lucide-react";
+import years from "../constants";
 
 export default function ProgramDetails() {
   return (
@@ -9,12 +10,14 @@ export default function ProgramDetails() {
             Program <span className="text-gradient">Structure</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto">
-            Our comprehensive three-year program is designed to give you both theoretical knowledge and practical skills in computer science and automation.
+            Our comprehensive three-year program is designed to give you both
+            theoretical knowledge and practical skills in computer science and
+            automation.
           </p>
         </div>
 
+        {/* Year Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Year Cards */}
           {years.map((year, index) => (
             <div key={index} className="card">
               <div className="mb-4 p-3 bg-blue-500/10 w-fit rounded-lg">
@@ -22,11 +25,22 @@ export default function ProgramDetails() {
               </div>
               <h3 className="text-xl font-semibold mb-3">{year.title}</h3>
               <p className="text-gray-400 mb-4">{year.description}</p>
+              <h1 className="pb-[7px] font-bold">{year.semester01}</h1>
               <div className="space-y-2">
-                {year.subjects.map((subject, idx) => (
+                {year.subjectsS01.map((subjectS1, idx) => (
                   <div key={idx} className="flex items-center text-gray-300">
                     <BookOpen className="w-4 h-4 mr-2 text-blue-500" />
-                    <span>{subject}</span>
+                    <span>{subjectS1}</span>
+                  </div>
+                ))}
+
+                <h1 className="pt-[20px] pb-[7px] font-bold">
+                  {year.semester02}
+                </h1>
+                {year.subjectsS02.map((subjectS2, idx) => (
+                  <div key={idx} className="flex items-center text-gray-300">
+                    <BookOpen className="w-4 h-4 mr-2 text-blue-500" />
+                    <span>{subjectS2}</span>
                   </div>
                 ))}
               </div>
@@ -54,7 +68,9 @@ export default function ProgramDetails() {
               </div>
               <GraduationCap className="w-8 h-8 text-blue-500" />
             </div>
-            <p className="text-2xl font-bold text-gradient">Bachelor's Degree</p>
+            <p className="text-2xl font-bold text-gradient">
+              Bachelor's Degree
+            </p>
           </div>
 
           <div className="card">
@@ -72,44 +88,3 @@ export default function ProgramDetails() {
     </div>
   );
 }
-
-const years = [
-  {
-    title: "First Year",
-    description: "Foundation in mathematics, programming fundamentals, and basic engineering principles.",
-    subjects: [
-      "Analyse 1",
-      "Algèbre 1",
-      "Algorithmique et structure de données 1 ",
-      "Structure machine 1",
-      "Physique 1",
-      "Chimie 1",
-      "Management de projet 1",
-      "Introduction au développement Web",
-      "Technical English 1",
-      "Communication professionnelle"
-    ]
-  },
-  {
-    title: "Second Year",
-    description: "Advanced programming concepts and introduction to automation systems.",
-    subjects: [
-      "Data Structures & Algorithms",
-      "Object-Oriented Programming",
-      "Database Systems",
-      "Control Systems",
-      "Automation Fundamentals"
-    ]
-  },
-  {
-    title: "Third Year",
-    description: "Specialized courses in computer science and automation engineering.",
-    subjects: [
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Robotics",
-      "Industrial Automation",
-      "Project Management"
-    ]
-  }
-];
