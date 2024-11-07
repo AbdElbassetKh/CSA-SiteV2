@@ -27,7 +27,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
 
   return (
     <motion.nav
-      className={`fixed w-full z-50 top-0 transition-all duration-300 ${
+      className={`fixed w-full z-50 top-0 transition-all duration-300 nav-height ${
         isScrolled 
           ? 'bg-black/30 backdrop-blur-md backdrop-saturate-150 border-b border-white/10 shadow-lg'
           : 'bg-transparent'
@@ -36,15 +36,15 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
+        <div className="flex items-center justify-between h-full">
           <motion.div
             className="flex-shrink-0"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <button 
-              className="text-2xl font-bold text-gradient cursor-pointer" 
+              className="text-xl sm:text-2xl font-bold text-gradient cursor-pointer" 
               onClick={() => onNavigate('home')}
             >
               CSA
@@ -52,12 +52,12 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
           </motion.div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
+            <div className="ml-10 flex items-center space-x-6 lg:space-x-8">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
                   onClick={() => onNavigate(item.id)}
-                  className={`transition-colors ${
+                  className={`transition-colors text-sm lg:text-base ${
                     currentPage === item.id
                       ? 'text-white font-semibold'
                       : 'text-gray-300 hover:text-white'
@@ -73,7 +73,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
               ))}
               <motion.button
                 onClick={() => onNavigate('login')}
-                className="btn-primary"
+                className="btn-primary text-sm lg:text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: -20 }}
@@ -88,7 +88,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white transition-colors"
+              className="text-gray-300 hover:text-white transition-colors p-2"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -108,7 +108,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="px-4 pt-2 pb-3 space-y-1">
+            <div className="px-4 py-4 space-y-3">
               {navItems.map((item, index) => (
                 <motion.button
                   key={item.id}
@@ -116,10 +116,10 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
                     onNavigate(item.id);
                     setIsOpen(false);
                   }}
-                  className={`block px-3 py-2 rounded-md w-full text-left transition-colors ${
+                  className={`block px-3 py-2.5 rounded-md w-full text-left transition-colors ${
                     currentPage === item.id
-                      ? 'text-white font-semibold'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-white font-semibold bg-gray-800'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                   }`}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -133,7 +133,7 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
                   onNavigate('login');
                   setIsOpen(false);
                 }}
-                className="btn-primary w-full mt-2"
+                className="btn-primary w-full mt-4"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
