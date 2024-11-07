@@ -1,6 +1,10 @@
 import { Github, Twitter, Instagram, Linkedin } from 'lucide-react';
 
-function Footer() {
+interface FooterProps {
+  onNavigate: (page: string) => void;
+}
+
+function Footer({ onNavigate }: FooterProps) {
   return (
     <footer className="bg-black py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -8,32 +12,79 @@ function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4">About CSA</h4>
             <ul className="space-y-2">
-              <li><a href="#why" className="text-gray-400 hover:text-white">Why us?</a></li>
-              <li><a href="#about" className="text-gray-400 hover:text-white">About</a></li>
-              <li><button onClick={() => window.location.hash = '#program'} className="text-gray-400 hover:text-white">Program details</button></li>
-              <li><a href="#club" className="text-gray-400 hover:text-white">CSA Club</a></li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('why-us')} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Why us?
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('about')} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  About
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('program-details')} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Program details
+                </button>
+              </li>
+              <li>
+                <button 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  CSA Club
+                </button>
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="text-white font-bold mb-4">Learn</h4>
             <ul className="space-y-2">
-              <li><a href="#signin" className="text-gray-400 hover:text-white">Sign in</a></li>
-              <li><a href="#questions" className="text-gray-400 hover:text-white">Questions</a></li>
-              <li><a href="#contact" className="text-gray-400 hover:text-white">Contact Us</a></li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('login')} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Sign in
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => onNavigate('question')} 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Questions
+                </button>
+              </li>
+              <li>
+                <button 
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  Contact Us
+                </button>
+              </li>
             </ul>
           </div>
           <div className="md:col-span-2">
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-6 h-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
             </div>
