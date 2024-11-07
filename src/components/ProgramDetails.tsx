@@ -56,7 +56,62 @@ export default function ProgramDetails() {
         }
       ]
     },
-    // ... rest of the yearData remains the same ...
+        {
+      title: "Second Year",
+      description: "Advanced programming concepts, systems design, and specialization tracks.",
+      semesters: [
+        {
+          name: "Semester 03",
+          courses: [
+            { name: "Fichiers et structure de données", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Algorithmique et structure de données 3", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
+            { name: "Systèmes d'information", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Théorie des graphes", coefficient: 2, credits: 4, continuous: 25, exam: 75 },
+            { name: "Théorie du Signal", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
+            { name: "Electricité 1", coefficient: 3, credits: 6, continuous: 50, exam: 50 }
+          ]
+        },
+        {
+          name: "Semester 04",
+          courses: [
+            { name: "Réseaux et télécommunications", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Système d'exploitation", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Bases de données", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Systèmes Asservis 1", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Traitement du Signal", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Programmation orienté objet", coefficient: 2, credits: 4, continuous: 50, exam: 50 }
+          ]
+        }
+      ]
+    },
+    {
+      title: "Third Year",
+      description: "Professional specialization, advanced topics, and final year project.",
+      semesters: [
+        {
+          name: "Semester 05",
+          courses: [
+            { name: "Analyse de données", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Système d'aide à la décision", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Méthodes de développement DevOps", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Systèmes Asservis 2", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Électronique de Puissance", coefficient: 2, credits: 5, continuous: 50, exam: 50 },
+            { name: "Programmation Mobile et IoT", coefficient: 2, credits: 4, continuous: 50, exam: 50 }
+          ]
+        },
+        {
+          name: "Semester 06",
+          courses: [
+            { name: "Apprentissage Automatique", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "Cloud Computing et visualisation", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "Gestion de projet informatique", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "Techniques de l'IA", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "Projet de Fin de Cycle", coefficient: 3, credits: 6, continuous: 100, exam: 0 }
+          ]
+        }
+      ]
+    }
+  ];
   ];
 
   return (
