@@ -7,18 +7,19 @@ interface HeroProps {
 
 function Hero({ onNavigate }: HeroProps) {
   return (
-    <div className="relative bg-black min-h-screen pt-16">
+    <div className="relative bg-black min-h-[calc(100vh-4rem)] pt-16">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="relative w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full py-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="max-w-2xl lg:max-w-none mx-auto lg:mx-0"
           >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
               <motion.span
                 className="text-gradient inline-block"
                 initial={{ opacity: 0, x: -20 }}
@@ -38,7 +39,7 @@ function Hero({ onNavigate }: HeroProps) {
               </motion.span>
             </h1>
             <motion.p
-              className="text-gray-400 text-xl mb-8 leading-relaxed"
+              className="text-gray-400 text-lg sm:text-xl mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -49,7 +50,7 @@ function Hero({ onNavigate }: HeroProps) {
               </span>
             </motion.p>
             <motion.div
-              className="flex gap-4"
+              className="flex flex-wrap gap-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
@@ -75,17 +76,17 @@ function Hero({ onNavigate }: HeroProps) {
           </motion.div>
           
           <motion.div
-            className="relative"
+            className="relative max-w-2xl lg:max-w-none mx-auto"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="relative z-10 rounded-2xl overflow-hidden">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-xl" />
               <motion.img 
-                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=600&h=400"
+                src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200&h=900"
                 alt="Programming interface"
-                className="relative z-10 rounded-2xl shadow-2xl"
+                className="relative z-10 w-full h-full object-cover rounded-2xl shadow-2xl"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               />
