@@ -17,9 +17,9 @@ function Hero({ onNavigate }: HeroProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-2xl lg:max-w-none mx-auto lg:mx-0"
+            className="max-w-2xl lg:max-w-none mx-auto lg:mx-0 space-y-6 sm:space-y-8"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 lg:mb-8 tracking-tight">
+            <h1 className="heading-1">
               <motion.span
                 className="text-gradient inline-block"
                 initial={{ opacity: 0, x: -20 }}
@@ -39,25 +39,25 @@ function Hero({ onNavigate }: HeroProps) {
               </motion.span>
             </h1>
             <motion.p
-              className="text-gray-400 text-lg sm:text-xl xl:text-2xl mb-8 lg:mb-10 leading-relaxed max-w-xl"
+              className="body-text text-gray-400 max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               Hybrid Double Diplomation in Faculty of Technology in
-              <span className="block font-semibold text-gray-300 mt-1">
+              <span className="block font-semibold text-gray-300 mt-2">
                 Badji Mokhtar Annaba University
               </span>
             </motion.p>
             <motion.div
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 pt-2 sm:pt-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
               <motion.button
                 onClick={() => onNavigate('program-details')}
-                className="btn-primary flex items-center gap-2 group text-lg"
+                className="btn-primary flex items-center gap-2 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -66,7 +66,7 @@ function Hero({ onNavigate }: HeroProps) {
               </motion.button>
               <motion.button
                 onClick={() => onNavigate('about')}
-                className="btn-secondary text-lg"
+                className="btn-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
