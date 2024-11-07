@@ -7,19 +7,19 @@ interface HeroProps {
 
 function Hero({ onNavigate }: HeroProps) {
   return (
-    <div className="relative bg-black min-h-[calc(100vh-4rem)] pt-16">
+    <div className="relative bg-black min-h-[calc(100vh-4rem)] flex items-center">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black" />
       
-      <div className="relative w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center w-full py-12">
+      <div className="relative w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-2xl lg:max-w-none mx-auto lg:mx-0"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 lg:mb-8 tracking-tight">
               <motion.span
                 className="text-gradient inline-block"
                 initial={{ opacity: 0, x: -20 }}
@@ -39,13 +39,13 @@ function Hero({ onNavigate }: HeroProps) {
               </motion.span>
             </h1>
             <motion.p
-              className="text-gray-400 text-lg sm:text-xl mb-8 leading-relaxed"
+              className="text-gray-400 text-lg sm:text-xl xl:text-2xl mb-8 lg:mb-10 leading-relaxed max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
               Hybrid Double Diplomation in Faculty of Technology in
-              <span className="block font-semibold text-gray-300">
+              <span className="block font-semibold text-gray-300 mt-1">
                 Badji Mokhtar Annaba University
               </span>
             </motion.p>
@@ -57,16 +57,16 @@ function Hero({ onNavigate }: HeroProps) {
             >
               <motion.button
                 onClick={() => onNavigate('program-details')}
-                className="btn-primary flex items-center gap-2 group"
+                className="btn-primary flex items-center gap-2 group text-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Get Started
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.button
                 onClick={() => onNavigate('about')}
-                className="btn-secondary"
+                className="btn-secondary text-lg"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -76,7 +76,7 @@ function Hero({ onNavigate }: HeroProps) {
           </motion.div>
           
           <motion.div
-            className="relative max-w-2xl lg:max-w-none mx-auto"
+            className="relative max-w-2xl lg:max-w-none mx-auto lg:ml-auto"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
