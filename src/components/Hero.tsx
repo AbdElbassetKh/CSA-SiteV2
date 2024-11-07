@@ -12,15 +12,14 @@ function Hero({ onNavigate }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-black/90 to-black" />
       
       <div className="relative w-full max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Added pt-16 for mobile to ensure content doesn't overlap with navbar */}
-        <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center pt-16 sm:pt-20 lg:pt-0">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center mobile-nav-padding">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-2xl lg:max-w-none mx-auto lg:mx-0 space-y-6 sm:space-y-8"
           >
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-tight md:leading-tight lg:leading-tight">
+            <h1 className="heading-1">
               <motion.span
                 className="text-gradient inline-block"
                 initial={{ opacity: 0, x: -20 }}
@@ -40,7 +39,7 @@ function Hero({ onNavigate }: HeroProps) {
               </motion.span>
             </h1>
             <motion.p
-              className="text-base sm:text-lg md:text-xl text-gray-400 max-w-xl"
+              className="body-text text-gray-400 max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
