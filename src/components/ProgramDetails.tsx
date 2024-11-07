@@ -56,7 +56,7 @@ export default function ProgramDetails() {
         }
       ]
     },
-        {
+    {
       title: "Second Year",
       description: "Advanced programming concepts, systems design, and specialization tracks.",
       semesters: [
@@ -111,7 +111,6 @@ export default function ProgramDetails() {
         }
       ]
     }
-  ];
   ];
 
   return (
