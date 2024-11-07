@@ -8,7 +8,6 @@ interface Course {
   credits: number;
   continuous: number;
   exam: number;
-  isPrerequisite?: boolean;
 }
 
 interface Semester {
@@ -24,6 +23,15 @@ interface YearData {
 
 export default function ProgramDetails() {
   const [expandedYear, setExpandedYear] = useState<number | null>(null);
+  const [expandedSemesters, setExpandedSemesters] = useState<Record<string, boolean>>({});
+
+  const toggleSemester = (yearIndex: number, semesterIndex: number) => {
+    const key = `${yearIndex}-${semesterIndex}`;
+    setExpandedSemesters(prev => ({
+      ...prev,
+      [key]: !prev[key]
+    }));
+  };
 
   const yearData: YearData[] = [
     {
@@ -33,25 +41,25 @@ export default function ProgramDetails() {
         {
           name: "Semester 01",
           courses: [
-            { name: "Analysis 1", coefficient: 4, credits: 7, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Algebra 1", coefficient: 4, credits: 7, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Algorithmique et structure de données 1", coefficient: 4, credits: 7, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Structure machine 1", coefficient: 4, credits: 7, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Physics 1", coefficient: 4, credits: 7, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Chemistry 1", coefficient: 4, credits: 7, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Management de projet 1", coefficient: 1, credits: 2, continuous: 100, exam: 0 },
+            { name: "Analysis 1", coefficient: 4, credits: 7, continuous: 50, exam: 50 },
+            { name: "Algebra 1", coefficient: 4, credits: 7, continuous: 50, exam: 50 },
+            { name: "Algorithms and Data Structures 1", coefficient: 4, credits: 7, continuous: 50, exam: 50 },
+            { name: "Computer Architecture 1", coefficient: 4, credits: 7, continuous: 50, exam: 50 },
+            { name: "Physics 1", coefficient: 4, credits: 7, continuous: 50, exam: 50 },
+            { name: "Chemistry 1", coefficient: 4, credits: 7, continuous: 50, exam: 50 },
+            { name: "Project Management 1", coefficient: 1, credits: 2, continuous: 100, exam: 0 },
             { name: "Technical English 1", coefficient: 1, credits: 2, continuous: 100, exam: 0 }
           ]
         },
         {
           name: "Semester 02",
           courses: [
-            { name: "Analysis 2", coefficient: 4, credits: 6, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Algebra 2", coefficient: 3, credits: 6, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Algorithmique et structure de données 2", coefficient: 4, credits: 6, continuous: 50, exam: 50, isPrerequisite: true },
-            { name: "Structure machine 2", coefficient: 2, credits: 4, continuous: 25, exam: 75, isPrerequisite: true },
-            { name: "Probabilité et statistique", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
-            { name: "Programmation 2", coefficient: 4, credits: 6, continuous: 50, exam: 50, isPrerequisite: true }
+            { name: "Analysis 2", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Algebra 2", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
+            { name: "Algorithms and Data Structures 2", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Computer Architecture 2", coefficient: 2, credits: 4, continuous: 25, exam: 75 },
+            { name: "Probability and Statistics", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
+            { name: "Programming 2", coefficient: 4, credits: 6, continuous: 50, exam: 50 }
           ]
         }
       ]
@@ -63,23 +71,23 @@ export default function ProgramDetails() {
         {
           name: "Semester 03",
           courses: [
-            { name: "Fichiers et structure de données", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
-            { name: "Algorithmique et structure de données 3", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
-            { name: "Systèmes d'information", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
-            { name: "Théorie des graphes", coefficient: 2, credits: 4, continuous: 25, exam: 75 },
-            { name: "Théorie du Signal", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
-            { name: "Electricité 1", coefficient: 3, credits: 6, continuous: 50, exam: 50 }
+            { name: "Files and Data Structures", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Algorithms and Data Structures 3", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
+            { name: "Information Systems", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Graph Theory", coefficient: 2, credits: 4, continuous: 25, exam: 75 },
+            { name: "Signal Theory", coefficient: 3, credits: 6, continuous: 50, exam: 50 },
+            { name: "Electricity 1", coefficient: 3, credits: 6, continuous: 50, exam: 50 }
           ]
         },
         {
           name: "Semester 04",
           courses: [
-            { name: "Réseaux et télécommunications", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
-            { name: "Système d'exploitation", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
-            { name: "Bases de données", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
-            { name: "Systèmes Asservis 1", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
-            { name: "Traitement du Signal", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
-            { name: "Programmation orienté objet", coefficient: 2, credits: 4, continuous: 50, exam: 50 }
+            { name: "Networks and Telecommunications", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Operating Systems", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Databases", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Control Systems 1", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Signal Processing", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Object-Oriented Programming", coefficient: 2, credits: 4, continuous: 50, exam: 50 }
           ]
         }
       ]
@@ -91,22 +99,22 @@ export default function ProgramDetails() {
         {
           name: "Semester 05",
           courses: [
-            { name: "Analyse de données", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
-            { name: "Système d'aide à la décision", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
-            { name: "Méthodes de développement DevOps", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
-            { name: "Systèmes Asservis 2", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
-            { name: "Électronique de Puissance", coefficient: 2, credits: 5, continuous: 50, exam: 50 },
-            { name: "Programmation Mobile et IoT", coefficient: 2, credits: 4, continuous: 50, exam: 50 }
+            { name: "Data Analysis", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Decision Support Systems", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "DevOps Development Methods", coefficient: 4, credits: 6, continuous: 50, exam: 50 },
+            { name: "Control Systems 2", coefficient: 2, credits: 4, continuous: 50, exam: 50 },
+            { name: "Power Electronics", coefficient: 2, credits: 5, continuous: 50, exam: 50 },
+            { name: "Mobile and IoT Programming", coefficient: 2, credits: 4, continuous: 50, exam: 50 }
           ]
         },
         {
           name: "Semester 06",
           courses: [
-            { name: "Apprentissage Automatique", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
-            { name: "Cloud Computing et visualisation", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
-            { name: "Gestion de projet informatique", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
-            { name: "Techniques de l'IA", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
-            { name: "Projet de Fin de Cycle", coefficient: 3, credits: 6, continuous: 100, exam: 0 }
+            { name: "Machine Learning", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "Cloud Computing and Visualization", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "IT Project Management", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "AI Techniques", coefficient: 3, credits: 5, continuous: 50, exam: 50 },
+            { name: "Final Year Project", coefficient: 3, credits: 6, continuous: 100, exam: 0 }
           ]
         }
       ]
@@ -126,14 +134,14 @@ export default function ProgramDetails() {
         </div>
 
         <div className="space-y-8">
-          {yearData.map((year, index) => (
+          {yearData.map((year, yearIndex) => (
             <div 
-              key={index} 
+              key={yearIndex} 
               className="rounded-lg border border-gray-800 hover:border-blue-500/50 transition-colors duration-300 bg-gray-900/30"
             >
               <div 
                 className="flex justify-between items-center cursor-pointer p-6"
-                onClick={() => setExpandedYear(expandedYear === index ? null : index)}
+                onClick={() => setExpandedYear(expandedYear === yearIndex ? null : yearIndex)}
               >
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-blue-500/10 rounded-lg">
@@ -144,54 +152,67 @@ export default function ProgramDetails() {
                     <p className="text-gray-400 mt-1">{year.description}</p>
                   </div>
                 </div>
-                {expandedYear === index ? (
+                {expandedYear === yearIndex ? (
                   <ChevronUp className="w-5 h-5 text-gray-400" />
                 ) : (
                   <ChevronDown className="w-5 h-5 text-gray-400" />
                 )}
               </div>
 
-              {expandedYear === index && (
-                <div className="border-t border-gray-800 p-6">
+              {expandedYear === yearIndex && (
+                <div className="border-t border-gray-800 p-6 space-y-6">
                   {year.semesters.map((semester, semIndex) => (
-                    <div key={semIndex} className="mb-8 last:mb-0">
-                      <h4 className="text-lg font-semibold mb-4 text-white">{semester.name}</h4>
-                      <div className="space-y-4">
-                        {semester.courses.map((course, courseIndex) => (
-                          <div 
-                            key={courseIndex}
-                            className="bg-gray-900/50 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-gray-900/70 transition-colors"
-                          >
-                            <div className="flex items-center gap-3">
-                              <BookOpen className="w-4 h-4 text-blue-500 shrink-0" />
-                              <span className={`text-white ${course.isPrerequisite ? "font-medium" : ""}`}>
-                                {course.name}
-                                {course.isPrerequisite && (
-                                  <span className="ml-2 text-xs text-blue-400">(Prerequisite)</span>
-                                )}
-                              </span>
-                            </div>
-                            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
-                              <div className="flex items-center gap-2">
-                                <Calculator className="w-4 h-4" />
-                                <span>Coef: {course.coefficient}</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <BookOpen className="w-4 h-4" />
-                                <span>Credits: {course.credits}</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <FlaskConical className="w-4 h-4" />
-                                <span>Continuous: {course.continuous}%</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <Clock className="w-4 h-4" />
-                                <span>Exam: {course.exam}%</span>
-                              </div>
-                            </div>
-                          </div>
-                        ))}
+                    <div 
+                      key={semIndex} 
+                      className="rounded-lg border border-gray-800/50 bg-gray-900/20"
+                    >
+                      <div
+                        className="flex justify-between items-center cursor-pointer p-4"
+                        onClick={() => toggleSemester(yearIndex, semIndex)}
+                      >
+                        <h4 className="text-lg font-semibold text-white">{semester.name}</h4>
+                        {expandedSemesters[`${yearIndex}-${semIndex}`] ? (
+                          <ChevronUp className="w-4 h-4 text-gray-400" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4 text-gray-400" />
+                        )}
                       </div>
+
+                      {expandedSemesters[`${yearIndex}-${semIndex}`] && (
+                        <div className="border-t border-gray-800/50 p-4">
+                          <div className="space-y-4">
+                            {semester.courses.map((course, courseIndex) => (
+                              <div 
+                                key={courseIndex}
+                                className="bg-gray-900/50 p-4 rounded-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:bg-gray-900/70 transition-colors"
+                              >
+                                <div className="flex items-center gap-3">
+                                  <BookOpen className="w-4 h-4 text-blue-500 shrink-0" />
+                                  <span className="text-white">{course.name}</span>
+                                </div>
+                                <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+                                  <div className="flex items-center gap-2">
+                                    <Calculator className="w-4 h-4" />
+                                    <span>Coef: {course.coefficient}</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <BookOpen className="w-4 h-4" />
+                                    <span>Credits: {course.credits}</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <FlaskConical className="w-4 h-4" />
+                                    <span>Continuous: {course.continuous}%</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Clock className="w-4 h-4" />
+                                    <span>Exam: {course.exam}%</span>
+                                  </div>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   ))}
                 </div>
