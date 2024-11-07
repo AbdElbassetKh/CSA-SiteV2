@@ -9,6 +9,8 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
@@ -33,7 +35,7 @@
            transition-all duration-200 ease-in-out transform
            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black
            hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25
-           active:scale-95;
+           active:scale-95 font-medium;
   }
 
   .btn-secondary {
@@ -41,19 +43,21 @@
            transition-all duration-200 ease-in-out
            focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-black
            hover:bg-gray-700 hover:shadow-lg hover:shadow-gray-500/25
-           active:scale-95;
+           active:scale-95 font-medium;
   }
 
   .input-primary {
     @apply bg-black border border-gray-800 rounded-lg px-4 py-2 text-white
            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
-           transition-all duration-200 ease-in-out;
+           transition-all duration-200 ease-in-out
+           hover:border-gray-700;
   }
 
   .card {
     @apply bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl border border-gray-800/50
            transition-all duration-200 ease-in-out
-           hover:border-gray-700/50 hover:shadow-lg hover:shadow-blue-500/10;
+           hover:border-gray-700/50 hover:shadow-lg hover:shadow-blue-500/10
+           hover:bg-gray-900/60;
   }
 
   .backdrop-blur-navbar {
