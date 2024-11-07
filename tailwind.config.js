@@ -21,6 +21,29 @@ export default {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '30': '7.5rem',
+      },
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+      },
+      screens: {
+        'xs': '475px',
+        '3xl': '1920px',
+      },
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: '1rem',
+          sm: '1.5rem',
+          lg: '2rem',
+          xl: '2.5rem',
+          '2xl': '3rem',
+        },
+      },
     },
   },
   plugins: [],
