@@ -30,12 +30,12 @@ function Features({ onNavigate }: FeaturesProps) {
 
   return (
     <div className="bg-black/95 py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature, index) => (
             <AnimatedCard key={index} delay={index * 0.2}>
               <motion.div 
-                className="card group cursor-pointer backdrop-blur-none"
+                className="card group cursor-pointer backdrop-blur-none h-full"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => onNavigate(feature.action)}
@@ -45,7 +45,7 @@ function Features({ onNavigate }: FeaturesProps) {
                 </div>
                 <h3 className="text-xl font-semibold text-white mb-3">{feature.title}</h3>
                 <p className="text-gray-400 mb-4 leading-relaxed">{feature.description}</p>
-                <div className="text-blue-500 hover:text-blue-400 flex items-center gap-2 group">
+                <div className="text-blue-500 hover:text-blue-400 flex items-center gap-2 group mt-auto">
                   Learn more
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
