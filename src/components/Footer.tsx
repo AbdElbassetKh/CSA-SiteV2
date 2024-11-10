@@ -1,10 +1,7 @@
 import { Github, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-interface FooterProps {
-  onNavigate: (page: string) => void;
-}
-
-function Footer({ onNavigate }: FooterProps) {
+function Footer() {
   return (
     <footer className="bg-black py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,35 +10,36 @@ function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-white font-bold mb-4">About CSA</h4>
             <ul className="space-y-2">
               <li>
-                <button 
-                  onClick={() => onNavigate('why-us')} 
+                <Link 
+                  to="/why-us" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Why us?
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('about')} 
+                <Link 
+                  to="/about" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   About
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('program-details')} 
+                <Link 
+                  to="/program-details" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Program details
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
+                <Link 
+                  to="/club" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   CSA Club
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
@@ -49,27 +47,28 @@ function Footer({ onNavigate }: FooterProps) {
             <h4 className="text-white font-bold mb-4">Learn</h4>
             <ul className="space-y-2">
               <li>
-                <button 
-                  onClick={() => onNavigate('login')} 
+                <Link 
+                  to="/login" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Sign in
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
-                  onClick={() => onNavigate('question')} 
+                <Link 
+                  to="/question" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Questions
-                </button>
+                </Link>
               </li>
               <li>
-                <button 
+                <Link 
+                  to="/contact" 
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Contact Us
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
