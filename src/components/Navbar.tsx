@@ -1,15 +1,12 @@
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
-interface NavbarProps {
-  onNavigate: (page: string) => void;
-  currentPage: string;
-}
-
-export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,15 +16,10 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavigate = (page: string) => {
-    onNavigate(page);
-    setIsOpen(false);
-  };
-
   const navItems = [
-    { id: 'why-us', label: 'Why Us?' },
-    { id: 'about', label: 'About' },
-    { id: 'program-details', label: 'Program Details' }
+    { id: 'why-us', label: 'Why Us?', path: '/why-us' },
+    { id: 'about', label: 'About', path: '/about' },
+    { id: 'program-details', label: 'Program Details', path: '/program-details' }
   ];
 
   return (
@@ -49,45 +41,47 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <button 
-                className="text-xl sm:text-2xl font-bold text-gradient cursor-pointer z-50 relative" 
-                onClick={() => handleNavigate('home')}
+              <Link 
+                to="/"
+                className="text-xl sm:text-2xl font-bold text-gradient cursor-pointer z-50 relative"
               >
                 CSA
-              </button>
+              </Link>
             </motion.div>
             
             <div className="hidden md:block">
               <div className="ml-10 flex items-center space-x-6 lg:space-x-8">
                 {navItems.map((item, index) => (
-                  <motion.button
+                  <motion.div
                     key={item.id}
-                    onClick={() => handleNavigate(item.id)}
-                    className={`transition-colors text-sm lg:text-base ${
-                      currentPage === item.id
-                        ? 'text-white font-semibold'
-                        : 'text-gray-300 hover:text-white'
-                    }`}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                   >
-                    {item.label}
-                  </motion.button>
+                    <Link
+                      to={item.path}
+                      className={`transition-colors text-sm lg:text-base ${
+                        location.pathname === item.path
+                          ? 'text-white font-semibold'
+                          : 'text-gray-300 hover:text-white'
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 ))}
-                <motion.button
-                  onClick={() => handleNavigate('login')}
-                  className="btn-primary text-sm lg:text-base"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                <motion.div
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
-                  Sign in
-                </motion.button>
+                  <Link
+                    to="/login"
+                    className="btn-primary text-sm lg:text-base"
+                  >
+                    Sign in
+                  </Link>
+                </motion.div>
               </div>
             </div>
             
@@ -115,10 +109,8 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            {/* Backdrop blur layer */}
             <div className="absolute inset-0 bg-black/60 backdrop-blur-xl backdrop-saturate-150" />
             
-            {/* Content */}
             <motion.div
               className="relative h-full flex flex-col pt-24 px-4"
               initial={{ opacity: 0, y: 20 }}
@@ -128,20 +120,24 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
             >
               <div className="space-y-3">
                 {navItems.map((item, index) => (
-                  <motion.button
+                  <motion.div
                     key={item.id}
-                    onClick={() => handleNavigate(item.id)}
-                    className={`block w-full px-4 py-3 rounded-lg text-left transition-colors ${
-                      currentPage === item.id
-                        ? 'text-white font-semibold bg-white/10'
-                        : 'text-gray-300 hover:text-white hover:bg-white/5'
-                    }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    {item.label}
-                  </motion.button>
+                    <Link
+                      to={item.path}
+                      className={`block w-full px-4 py-3 rounded-lg text-left transition-colors ${
+                        location.pathname === item.path
+                          ? 'text-white font-semibold bg-white/10'
+                          : 'text-gray-300 hover:text-white hover:bg-white/5'
+                      }`}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 ))}
               </div>
               
@@ -151,12 +147,13 @@ export default function Navbar({ onNavigate, currentPage }: NavbarProps) {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                <button
-                  onClick={() => handleNavigate('login')}
-                  className="btn-primary w-full"
+                <Link
+                  to="/login"
+                  className="btn-primary w-full block text-center"
+                  onClick={() => setIsOpen(false)}
                 >
                   Sign in
-                </button>
+                </Link>
               </motion.div>
 
               <div className="mt-auto pb-8">
