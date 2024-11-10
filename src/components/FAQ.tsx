@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import { Plus, Minus, Send } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-interface FAQProps {
-  onNavigate: (page: string) => void;
-}
-
-function FAQ({ onNavigate }: FAQProps) {
+function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
@@ -61,13 +58,10 @@ function FAQ({ onNavigate }: FAQProps) {
           ))}
         </div>
         <div className="text-center mt-12">
-          <button 
-            onClick={() => onNavigate('question')}
-            className="btn-primary flex items-center gap-2 mx-auto group"
-          >
+          <Link to="/question" className="btn-primary inline-flex items-center gap-2 group">
             Ask your question
             <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </div>
       </div>
     </div>
