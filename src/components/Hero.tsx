@@ -1,11 +1,8 @@
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
-interface HeroProps {
-  onNavigate: (page: string) => void;
-}
-
-function Hero({ onNavigate }: HeroProps) {
+function Hero() {
   return (
     <div className="relative bg-black min-h-[calc(100vh-4rem)] flex items-center">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:60px_60px]" />
@@ -55,23 +52,25 @@ function Hero({ onNavigate }: HeroProps) {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              <motion.button
-                onClick={() => onNavigate('program-details')}
-                className="btn-primary flex items-center gap-2 group"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Get Started
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-              <motion.button
-                onClick={() => onNavigate('about')}
-                className="btn-secondary"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Learn More
-              </motion.button>
+              <Link to="/program-details">
+                <motion.button
+                  className="btn-primary flex items-center gap-2 group"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Get Started
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </motion.button>
+              </Link>
+              <Link to="/about">
+                <motion.button
+                  className="btn-secondary"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Learn More
+                </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
           
