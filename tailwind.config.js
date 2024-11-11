@@ -10,6 +10,13 @@ export default {
       animation: {
         'fade-in': 'fade-in 0.5s ease-out',
         'slide-up': 'slide-up 0.5s ease-out',
+        'slide-down': 'slide-down 0.5s ease-out',
+        'slide-left': 'slide-left 0.5s ease-out',
+        'slide-right': 'slide-right 0.5s ease-out',
+        'scale-up': 'scale-up 0.2s ease-out',
+        'scale-down': 'scale-down 0.2s ease-out',
+        'bounce-light': 'bounce-light 1s infinite',
+        'pulse-light': 'pulse-light 2s infinite',
       },
       keyframes: {
         'fade-in': {
@@ -19,6 +26,34 @@ export default {
         'slide-up': {
           '0%': { transform: 'translateY(10px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'slide-down': {
+          '0%': { transform: 'translateY(-10px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        'slide-left': {
+          '0%': { transform: 'translateX(10px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        'slide-right': {
+          '0%': { transform: 'translateX(-10px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        'scale-up': {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        'scale-down': {
+          '0%': { transform: 'scale(1.05)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        'bounce-light': {
+          '0%, 100%': { transform: 'translateY(-5%)' },
+          '50%': { transform: 'translateY(0)' },
+        },
+        'pulse-light': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
         },
       },
       spacing: {
@@ -43,6 +78,9 @@ export default {
           xl: '2.5rem',
           '2xl': '3rem',
         },
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       },
     },
   },

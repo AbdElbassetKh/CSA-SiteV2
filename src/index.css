@@ -19,39 +19,34 @@
     font-feature-settings: "ss01", "ss02", "cv01", "cv02";
   }
 
-  /* Improved spacing for sections */
   section {
     @apply py-16 sm:py-20 md:py-24 lg:py-28;
-  }
-
-  /* Container padding */
-  .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-blue-600 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg 
+    @apply bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg 
            transition-all duration-200 ease-in-out transform
            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black
-           hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25
-           active:scale-95 font-medium text-sm sm:text-base;
+           hover:from-blue-700 hover:to-blue-800 hover:shadow-lg hover:shadow-blue-500/25
+           active:scale-95 font-medium text-sm sm:text-base
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none disabled:active:scale-100;
   }
 
   .btn-secondary {
-    @apply bg-gray-800 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg
+    @apply bg-gray-800/80 backdrop-blur-sm text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg
            transition-all duration-200 ease-in-out
            focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-black
-           hover:bg-gray-700 hover:shadow-lg hover:shadow-gray-500/25
+           hover:bg-gray-700/80 hover:shadow-lg hover:shadow-gray-500/25
            active:scale-95 font-medium text-sm sm:text-base;
   }
 
   .input-primary {
-    @apply bg-black border border-gray-800 rounded-lg px-3 sm:px-4 py-2.5 text-white text-sm sm:text-base
+    @apply bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-lg px-3 sm:px-4 py-2.5 text-white text-sm sm:text-base
            focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
            transition-all duration-200 ease-in-out
-           hover:border-gray-700;
+           hover:border-gray-700 placeholder:text-gray-500;
   }
 
   .card {
@@ -65,7 +60,6 @@
     @apply backdrop-blur-md backdrop-saturate-150;
   }
 
-  /* Responsive spacing utilities */
   .section-spacing {
     @apply space-y-8 sm:space-y-10 md:space-y-12 lg:space-y-16;
   }
@@ -74,7 +68,6 @@
     @apply gap-6 sm:gap-8 md:gap-10 lg:gap-12;
   }
 
-  /* Responsive typography */
   .heading-1 {
     @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight sm:leading-tight md:leading-tight lg:leading-tight;
   }
@@ -88,10 +81,9 @@
   }
 
   .body-text {
-    @apply text-base sm:text-lg md:text-xl leading-relaxed;
+    @apply text-base sm:text-lg md:text-xl leading-relaxed text-gray-300;
   }
 
-  /* Component spacing */
   .page-section {
     @apply py-16 sm:py-20 md:py-24 lg:py-28;
   }
@@ -111,6 +103,31 @@
   .mobile-nav-padding {
     @apply pt-20 sm:pt-24 lg:pt-28;
   }
+
+  .gradient-border {
+    @apply relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-blue-500 before:to-purple-500 
+           before:rounded-lg before:-z-10 before:opacity-0 hover:before:opacity-100 before:transition-opacity;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500 font-bold;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10 rounded-lg shadow-xl;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+
+  .page-gradient {
+    @apply bg-gradient-to-b from-black via-gray-900/50 to-black;
+  }
+
+  .grid-pattern {
+    @apply absolute inset-0 bg-[url('/grid-pattern.svg')] bg-[size:60px_60px] pointer-events-none opacity-20;
+  }
 }
 
 @layer utilities {
@@ -118,7 +135,6 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500;
   }
 
-  /* Responsive padding utilities */
   .section-padding {
     @apply py-16 sm:py-20 md:py-24 lg:py-28;
   }
@@ -126,4 +142,50 @@
   .content-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 20px -10px rgba(59, 130, 246, 0.5);
+    }
+    to {
+      box-shadow: 0 0 20px 5px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-800 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-700;
 }
