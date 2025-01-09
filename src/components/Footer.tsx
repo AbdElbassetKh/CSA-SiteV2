@@ -88,7 +88,7 @@ function Footer() {
               </a>
             </div>
             <p className="text-gray-400 mt-4">
-              © 2024 CSA. All rights Reserved.
+            © {new Date().getFullYear()} CSA. All rights Reserved.
             </p>
           </div>
         </div>

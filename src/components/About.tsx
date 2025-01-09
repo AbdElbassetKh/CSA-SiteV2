@@ -1,4 +1,5 @@
 import { Calendar, MapPin, Users, Award, ArrowRight, BookOpen, Cpu } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function About() {
   return (
@@ -89,10 +90,10 @@ function About() {
               Cutting-edge coursework combining theoretical knowledge with hands-on practical experience
               in both computer science and automation systems.
             </p>
-            <button className="text-blue-500 hover:text-blue-400 flex items-center gap-2 group">
+            <Link to="/program-details" className="text-blue-500 hover:text-blue-400 flex items-center gap-2 group">
               Learn more
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </div>
 
           <div className="card hover:border-gray-700/50">

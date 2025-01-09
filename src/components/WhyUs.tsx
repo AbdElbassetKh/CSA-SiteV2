@@ -1,4 +1,4 @@
-import { Cpu, Code2, GraduationCap, Briefcase, Users, Globe, ArrowRight } from 'lucide-react';
+import { Cpu, Code2, GraduationCap, Briefcase, Users, Globe } from 'lucide-react';
 
 function WhyUs() {
   const reasons = [
@@ -57,10 +57,6 @@ function WhyUs() {
               </div>
               <h3 className="text-xl font-semibold mb-3">{reason.title}</h3>
               <p className="text-gray-400 mb-4">{reason.description}</p>
-              <button className="text-blue-500 hover:text-blue-400 flex items-center gap-2 group">
-                Learn more
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
             </div>
           ))}
         </div>
