@@ -6,6 +6,7 @@ import WhyUsPage from './pages/WhyUsPage';
 import ProgramDetailsPage from './pages/ProgramDetailsPage';
 import LoginPage from './pages/LoginPage';
 import QuestionPage from './pages/QuestionPage';
+import ClubPage from './pages/ClubPage';
 import Footer from './components/Footer';
 import Newsletter from './components/Newsletter';
 
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/program-details" element={<ProgramDetailsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/question" element={<QuestionPage />} />
+          <Route path="/club" element={<ClubPage />} />
         </Routes>
         <Newsletter />
         <Footer />
